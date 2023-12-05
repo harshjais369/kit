@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 
@@ -15,16 +16,45 @@ int isArmstrong(int n) {
     return sum == n;
 }
 
+void printArmstrong(int n) {
+    int i;
+    for (i = 1; i <= n; i++) {
+        if (isArmstrong(i)) printf("%d ", i);
+    }
+}
+
 int main() {
     char choice;
     int n;
-    while (1) {
-        printf("Enter a number: ");
-        scanf("%d", &n);
-        printf("\n%d is %s", n, isArmstrong(n) ? "an Armstrong number!\n" : "NOT an Armstrong number!\n");
-        printf("Do you want to check another number? (y/n): ");
-        scanf(" %c", &choice);
-        if (choice == 'n' || choice == 'N') break;
+    system("clear");
+    printf("---------- Armstrong number ---------- \n\n");
+    printf("1. Print Armstrong numbers from 1 to n\n");
+    printf("2. Check if a number is Armstrong number\n");
+    printf("3. Exit\n\n");
+    printf("Enter your choice: ");
+    scanf("%d", &n);
+    switch (n) {
+        case 1:
+            printf("Enter n: ");
+            scanf("%d", &n);
+            printf("\nArmstrong numbers from 1 to %d: ", n);
+            printArmstrong(n);
+            printf("\n");
+            break;
+        case 2:
+            while (1) {
+                printf("Enter a number: ");
+                scanf("%d", &n);
+                printf("\n%d is %s", n, isArmstrong(n) ? "an Armstrong number!\n" : "NOT an Armstrong number!\n");
+                printf("Do you want to check another number? (y/n): ");
+                scanf(" %c", &choice);
+                if (choice == 'n' || choice == 'N') break;
+            }
+            break;
+        case 3:
+            exit(0);
+        default:
+            printf("Invalid choice!\n");
     }
     return 0;
 }
