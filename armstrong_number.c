@@ -17,14 +17,10 @@ int isArmstrong(int n) {
 }
 
 void printArmstrong(int n) {
-    int i;
-    for (i = 1; i <= n; i++) {
-        if (isArmstrong(i)) printf("%d ", i);
-    }
+    for (int i = 1; i <= n; i++) if (isArmstrong(i)) printf("%d ", i);
 }
 
 int main() {
-    char choice;
     int n;
     system("clear");
     printf("---------- Armstrong number ---------- \n\n");
@@ -37,7 +33,7 @@ int main() {
         case 1:
             printf("Enter n: ");
             scanf("%d", &n);
-            printf("\nArmstrong numbers from 1 to %d: ", n);
+            printf("\n -> Armstrong numbers [1 to %d]: ", n);
             printArmstrong(n);
             printf("\n");
             break;
@@ -45,16 +41,18 @@ int main() {
             while (1) {
                 printf("Enter a number: ");
                 scanf("%d", &n);
-                printf("\n%d is %s", n, isArmstrong(n) ? "an Armstrong number!\n" : "NOT an Armstrong number!\n");
-                printf("Do you want to check another number? (y/n): ");
+                printf("\n -> %d is %s", n, isArmstrong(n) ? "an Armstrong number!" : "NOT an Armstrong number!");
+                printf("\n\nDo you want to check another number? (y/n): ");
+                char choice;
                 scanf(" %c", &choice);
                 if (choice == 'n' || choice == 'N') break;
             }
             break;
         case 3:
+            printf("\n -> Exiting...\n");
             exit(0);
         default:
-            printf("Invalid choice!\n");
+            printf(" -> Invalid choice! Exiting...\n");
     }
     return 0;
 }
